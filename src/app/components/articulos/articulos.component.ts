@@ -11,7 +11,7 @@ import { ModalDialogService } from '../../services/modal-dialog.service';
 @Component({
   selector: 'app-articulos',
   templateUrl: './articulos.component.html',
-  styleUrls: ['./articulos.component.css']
+  styleUrls: ['./articulos.component.css'],
 })
 export class ArticulosComponent implements OnInit {
   Titulo = 'Articulos';
@@ -20,18 +20,17 @@ export class ArticulosComponent implements OnInit {
     B: '(Eliminar)',
     M: '(Modificar)',
     C: '(Consultar)',
-    L: '(Listado)'
+    L: '(Listado)',
   };
   AccionABMC = 'L'; // inicialmente inicia en el Listado de articulos (buscar con parametros)
   Mensajes = {
     SD: ' No se encontraron registros...',
-    RD: ' Revisar los datos ingresados...'
+    RD: ' Revisar los datos ingresados...',
   };
 
   Items: Articulo[] = null;
   RegistrosTotal: number;
   Familias: ArticuloFamilia[] = [];
-
 
   Pagina = 1; // inicia pagina 1
 
@@ -39,13 +38,12 @@ export class ArticulosComponent implements OnInit {
   OpcionesActivo = [
     { Id: null, Nombre: '' },
     { Id: true, Nombre: 'SI' },
-    { Id: false, Nombre: 'NO' }
+    { Id: false, Nombre: 'NO' },
   ];
 
   FormBusqueda: FormGroup;
   FormRegistro: FormGroup;
   submitted = false;
-
 
   constructor(
     public formBuilder: FormBuilder,
@@ -59,19 +57,23 @@ export class ArticulosComponent implements OnInit {
   ngOnInit() {
     this.FormBusqueda = this.formBuilder.group({
       Nombre: [''],
-      Activo: [null]
+      Activo: [null],
     });
     this.FormRegistro = this.formBuilder.group({
       IdArticulo: [0],
       Nombre: [
         '',
-        [Validators.required, Validators.minLength(4), Validators.maxLength(55)]
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(55),
+        ],
       ],
       Precio: [null, [Validators.required, Validators.pattern('[0-9]{1,7}')]],
       Stock: [null, [Validators.required, Validators.pattern('[0-9]{1,7}')]],
       CodigoDeBarra: [
         '',
-        [Validators.required, Validators.pattern('[0-9]{13}')]
+        [Validators.required, Validators.pattern('[0-9]{13}')],
       ],
       IdArticuloFamilia: ['', [Validators.required]],
       FechaAlta: [
@@ -80,10 +82,10 @@ export class ArticulosComponent implements OnInit {
           Validators.required,
           Validators.pattern(
             '(0[1-9]|[12][0-9]|3[01])[-/](0[1-9]|1[012])[-/](19|20)[0-9]{2}'
-          )
-        ]
+          ),
+        ],
       ],
-      Activo: [true]
+      Activo: [true],
     });
 
     this.GetFamiliasArticulos();
@@ -115,6 +117,7 @@ export class ArticulosComponent implements OnInit {
         this.Items = res.Items;
         this.RegistrosTotal = res.RegistrosTotal;
       });
+    
   }
 
   // Obtengo un registro especifico según el Id
@@ -172,10 +175,8 @@ export class ArticulosComponent implements OnInit {
       ).toISOString();
 
     // agregar post
-    if (this.AccionABMC == "A") {
-      this.articulosService
-      .post(itemCopy)
-      .subscribe((res: any) => {
+    if (this.AccionABMC == 'A') {
+      this.articulosService.post(itemCopy).subscribe((res: any) => {
         this.Volver();
         this.modalDialogService.Alert('Registro agregado correctamente.');
         this.Buscar();
@@ -219,7 +220,7 @@ export class ArticulosComponent implements OnInit {
   }
 
   GetArticuloFamiliaNombre(Id) {
-    var Nombre = this.Familias.find(x => x.IdArticuloFamilia === Id)?.Nombre;
+    var Nombre = this.Familias.find((x) => x.IdArticuloFamilia === Id)?.Nombre;
     return Nombre;
   }
 }

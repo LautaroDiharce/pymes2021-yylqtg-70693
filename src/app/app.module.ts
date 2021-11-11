@@ -79,7 +79,7 @@ import { HotelesComponent } from './components/hoteles/hoteles.component';
     ArticulosFamiliasComponent,
     ArticulosComponent,
     ModalDialogComponent,
-
+    HotelesComponent,
     ClientesInfoComponent,
     VentasComponent,
     VentasConsultasComponent,
