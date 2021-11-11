@@ -2,13 +2,41 @@
   {{ Titulo }} <small>{{ TituloAccionABMC[AccionABMC] }}</small>
 </div>
 
-<form>
+<form name="FormBusqueda">
   <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-4 col-md-2">
+        <label class="col-form-label">Nombre:</label>
+      </div>
+      <div class="col-sm-8 col-md-4">
+        <input
+          type="text"
+          name="Nombre"
+          class="form-control"
+          formControlName="Nombre"
+          maxlength="55"
+        />
+      </div>
+      <div class="col-sm-4 col-md-2">
+        <label class="col-form-label">Activo:</label>
+      </div>
+      <div class="col-sm-8 col-md-4">
+        <!-- <select
+          class="form-control"
+          name="Habilitado"
+          formControlName="Habilitado"
+        >
+          <option *ngFor="let opt of OpcionesActivo" [ngValue]="opt.Id">
+            ‌{{ opt.Nombre }}
+          </option>
+        </select> -->
+      </div>
+    </div>
     <hr />
 
     <!-- Botones -->
     <div class="row justify-content-center botones">
-      <button type="button" class="btn btn-primary" (click)="Buscar();">
+      <button type="button" class="btn btn-primary" (click)="Buscar()">
         <i class="fas fa-search"> </i> Buscar
       </button>
       <button type="button" class="btn btn-primary">

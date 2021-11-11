@@ -20,6 +20,11 @@ export class HotelesComponent implements OnInit {
   FormBusqueda: FormGroup;
   Hoteles: Hotel[] = null;
   RegistrosTotal: number;
+  OpcionesHabilitado = [
+    { Id: null, Nombre: '' },
+    { Id: true, Nombre: 'SI' },
+    { Id: false, Nombre: 'NO' },
+  ];
   constructor(
     private hotelService: HotelService,
     public formBuilder: FormBuilder
@@ -28,7 +33,7 @@ export class HotelesComponent implements OnInit {
   ngOnInit() {
     this.FormBusqueda = this.formBuilder.group({
       Nombre: [''],
-      Activo: [null],
+      Habilitado: [null],
     });
     // this.FormRegistro = this.formBuilder.group({
     //   IdArticulo: [0],
