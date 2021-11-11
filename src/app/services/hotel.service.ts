@@ -30,10 +30,6 @@ export class HotelService {
     return this.httpClient.get(this.resourceUrl, { params: params });
   }
 
-  // getById(Id: number) {
-  //   return this.httpClient.get(this.resourceUrl + Id);
-  // }
-
   post(obj: Hotel) {
     return this.httpClient.post(this.resourceUrl, obj);
   }
