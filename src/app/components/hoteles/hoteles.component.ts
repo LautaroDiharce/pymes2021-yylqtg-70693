@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { HotelService } from '../../services/hotel.service';
 @Component({
   selector: 'app-hoteles',
   templateUrl: './hoteles.component.html',
@@ -18,4 +18,21 @@ export class HotelesComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+  
+
+
+  Buscar() {
+    this.HotelService
+      .get(
+        this.FormBusqueda.value.Nombre,
+        this.FormBusqueda.value.Activo,
+        this.Pagina
+      )
+      .subscribe((res: any) => {
+        this.Items = res.Items;
+        this.RegistrosTotal = res.RegistrosTotal;
+      });
+  }
 }
+
+

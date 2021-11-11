@@ -1,38 +1,14 @@
 <div class="tituloPagina">
-  {{ Titulo }}
+  {{ Titulo }} <small>{{ TituloAccionABMC[AccionABMC] }}</small>
 </div>
-<form *ngIf="AccionABMC == 'L'">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-4 col-md-2">
-        <label class="col-form-label">Nombre:</label>
-      </div>
-      <div class="col-sm-8 col-md-4">
-        <input
-          type="text"
-          name="Nombre"
-          class="form-control"
-          formControlName="Nombre"
-          maxlength="55"
-        />
-      </div>
-      <div class="col-sm-4 col-md-2">
-        <label class="col-form-label">Activo:</label>
-      </div>
-      <div class="col-sm-8 col-md-4">
-        <select
-          class="form-control"
-          name="Activo"
-          formControlName="Activo"
-        ></select>
-      </div>
-    </div>
 
+<form>
+  <div class="container-fluid">
     <hr />
 
     <!-- Botones -->
     <div class="row justify-content-center botones">
-      <button type="button" class="btn btn-primary">
+      <button type="button" class="btn btn-primary" (click)="Buscar();">
         <i class="fas fa-search"> </i> Buscar
       </button>
       <button type="button" class="btn btn-primary">
@@ -42,3 +18,26 @@
     </div>
   </div>
 </form>
+
+<!-- Tabla de resultados -->
+<div id="divTablaResultados">
+  <table class="table table-hover table-sm table-bordered table-striped">
+    <thead>
+      <tr>
+        <th class="text-center">Nombre</th>
+        <th class="text-center">MaxPasajeros</th>
+        <th class="text-center">Fecha de Alta</th>
+        <th class="text-center">Habilitado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Hotel of Hoteles">
+        <td>{{ Hotel.Nombre }}</td>
+        <td class="text-right">{{ Hotel.MaxPasajeros }}</td>
+        <td class="text-right">{{ Hotel.FechaAlta }}</td>
+        <td>{{ Hotel.Habilitado ? 'SI' : 'NO' }}</td>
+        <td class="text-center text-nowrap"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
