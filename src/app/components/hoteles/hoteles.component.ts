@@ -68,6 +68,6 @@ export class HotelesComponent implements OnInit {
         this.Hoteles = res.Hoteles;
         this.RegistrosTotal = res.RegistrosTotal;
       });
-    console.log(this.RegistrosTotal.toString());
+    //console.log(this.RegistrosTotal.toString());
   }
 }
