@@ -41,7 +41,7 @@ export class HotelesComponent implements OnInit {
     this.hotelService
       .get(this.FormBusqueda.value.Nombre, this.FormBusqueda.value.Habilitado)
       .subscribe((res: any) => {
-        this.Hoteles = res.Hoteles;
+        this.Hoteles = res;
         this.RegistrosTotal = res.RegistrosTotal;
       });
     //console.log(this.Hoteles);
