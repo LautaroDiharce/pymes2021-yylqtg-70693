@@ -20,6 +20,7 @@ export class HotelService {
   }
 
   get(Nombre: string, Habilitado: boolean) {
+    //console.log(Nombre);
     let params = new HttpParams();
     if (Nombre != null) {
       params = params.append('Nombre', Nombre);
@@ -27,6 +28,7 @@ export class HotelService {
     if (Habilitado != null) {
       params = params.append('Habilitado', Habilitado.toString());
     }
+    //console.log(params);
     return this.httpClient.get(this.resourceUrl, { params: params });
   }
 

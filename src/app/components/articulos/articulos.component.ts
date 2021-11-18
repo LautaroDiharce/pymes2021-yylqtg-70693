@@ -107,8 +107,10 @@ export class ArticulosComponent implements OnInit {
 
   // Buscar segun los filtros, establecidos en FormRegistro
   Buscar() {
+    console.log(this.FormBusqueda.value.Nombre);
     this.articulosService
       .get(
+        
         this.FormBusqueda.value.Nombre,
         this.FormBusqueda.value.Activo,
         this.Pagina
@@ -116,6 +118,7 @@ export class ArticulosComponent implements OnInit {
       .subscribe((res: any) => {
         this.Items = res.Items;
         this.RegistrosTotal = res.RegistrosTotal;
+        console.log(this.Items);
       });
     
   }

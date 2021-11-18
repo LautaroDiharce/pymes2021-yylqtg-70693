@@ -43,6 +43,7 @@ export class HotelesComponent implements OnInit {
       .subscribe((res: any) => {
         this.Hoteles = res;
         this.RegistrosTotal = res.RegistrosTotal;
+        //console.log(this.Hoteles);
       });
     //console.log(this.Hoteles);
     //console.log(this.RegistrosTotal.toString());
