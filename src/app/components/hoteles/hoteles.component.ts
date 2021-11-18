@@ -47,13 +47,7 @@ export class HotelesComponent implements OnInit {
           Validators.maxLength(55),
         ],
       ],
-      Precio: [null, [Validators.required, Validators.pattern('[0-9]{1,7}')]],
-      Stock: [null, [Validators.required, Validators.pattern('[0-9]{1,7}')]],
-      CodigoDeBarra: [
-        '',
-        [Validators.required, Validators.pattern('[0-9]{13}')],
-      ],
-      IdArticuloFamilia: ['', [Validators.required]],
+      MaxPasajeros: [null, [Validators.required, Validators.pattern('[0-9]{1,7}')]],
       FechaAlta: [
         '',
         [
@@ -63,8 +57,12 @@ export class HotelesComponent implements OnInit {
           ),
         ],
       ],
-      Activo: [true],
+      Habilitado: [true],
     });
+  }
+
+  Volver() {
+    this.AccionABMC = 'L';
   }
 
   Buscar() {
