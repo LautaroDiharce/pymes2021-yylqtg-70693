@@ -196,23 +196,32 @@
 
       <!--campo Habilitado-->
       <div class="row">
-      <div class="col-sm-4 col-md-3 offset-md-1">
-        <label class="col-form-label" for="Habilitado">Habilitado:</label>
+        <div class="col-sm-4 col-md-3 offset-md-1">
+          <label class="col-form-label" for="Habilitado">Habilitado:</label>
+        </div>
+        <div class="col-sm-8 col-md-6">
+          <!-- ref?? disabled html no fucniona en reactive forms? -->
+          <select
+            class="form-control"
+            name="Habilitado"
+            formControlName="Habilitado"
+          >
+            <option *ngFor="let opt of OpcionesHabilitado" [ngValue]="opt.Id">
+              ‌{{ opt.Nombre }}
+            </option>
+          </select>
+        </div>
       </div>
-      <div class="col-sm-8 col-md-6">
-        <!-- ref?? disabled html no fucniona en reactive forms? -->
-        <select class="form-control" name="Habilitado" formControlName="Habilitado" [attr.disabled]="true">
-          <option *ngFor="let opt of OpcionesHabilitado"  [ngValue]="opt.Id">
-                      ‌{{ opt.Nombre }}
-          </option>            
-      </select>
-      </div>
-    </div>
     </fieldset>
     <!-- Botones Grabar, Cancelar/Volver' -->
     <hr />
     <div class="row justify-content-center botones">
-      <button type="button" *ngIf="AccionABMC !== 'C'" class="btn btn-primary">
+      <button
+        type="button"
+        *ngIf="AccionABMC !== 'C'"
+        class="btn btn-primary"
+        (click)="Grabar()"
+      >
         <i class="fas fa-check"></i> Grabar
       </button>
       &nbsp;
